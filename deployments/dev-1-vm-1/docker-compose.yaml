@@ -1,0 +1,21 @@
+services:
+  n8n:
+    image: n8nio/n8n:1.107.3
+    restart: always
+    ports:
+      - "5678:5678"
+    env_file:
+      - .env
+    volumes:
+      - ./config/data:/home/node/.n8n
+      - ./config/files:/files
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:15
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./config/postgres-data:/var/lib/postgresql/data
+      
