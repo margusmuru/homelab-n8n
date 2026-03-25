@@ -1,6 +1,6 @@
 services:
   n8n:
-    image: n8nio/n8n:2.10.2
+    image: n8nio/n8n:2.14.1
     restart: always
     ports:
       - "5678:5678"
