@@ -3,7 +3,7 @@ stages:
   - deploy
 
 include:
-# n8n — n8n + postgres on dev-1; 3 postgres secrets via envsubst from GITLAB_POSTGRES_*
+# n8n — n8n + task runner + postgres on dev-1; 3 postgres secrets + runner auth token via envsubst from GITLAB_POSTGRES_*
   - component: $CI_SERVER_FQDN/components/docker/validate-compose@~latest
     inputs:
       as: "lint-n8n"
@@ -14,4 +14,4 @@ include:
       environment: "dev-1"                          # host derives to dev-1-vm.margusm.dev
       local_path: "deployments/n8n"
       remote_path: "deployments/n8n-dev-1-vm-1"     # unchanged host dir → in-place update
-      substitute_vars: '$GITLAB_POSTGRES_DB $GITLAB_POSTGRES_USER $GITLAB_POSTGRES_PASSWORD'
+      substitute_vars: '$GITLAB_POSTGRES_DB $GITLAB_POSTGRES_USER $GITLAB_POSTGRES_PASSWORD $GITLAB_N8N_RUNNERS_AUTH_TOKEN'

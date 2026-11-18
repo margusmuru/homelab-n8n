@@ -2,5 +2,12 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "labels": ["dependencies"],
   "assignees": ["@margusmuru"],
-  "dependencyDashboard": true
+  "dependencyDashboard": true,
+  "packageRules": [
+    {
+      "description": "n8n and its task runner image must share the same tag",
+      "matchPackageNames": ["n8nio/n8n", "n8nio/runners"],
+      "groupName": "n8n"
+    }
+  ]
 }
