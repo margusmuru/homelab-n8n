@@ -21,7 +21,7 @@ services:
     depends_on:
       - n8n
   postgres:
-    image: postgres:17
+    image: postgres:19
     restart: always
     env_file:
       - .env
