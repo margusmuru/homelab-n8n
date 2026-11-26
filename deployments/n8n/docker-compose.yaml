@@ -1,6 +1,6 @@
 services:
   n8n:
-    image: n8nio/n8n:3.3.0
+    image: n8nio/n8n:3.4.1
     restart: always
     ports:
       - "5678:5678"
@@ -13,7 +13,7 @@ services:
       - postgres
   # External task runner (Code nodes); tag must match n8nio/n8n
   task-runners:
-    image: n8nio/runners:3.3.0
+    image: n8nio/runners:3.4.1
     restart: always
     environment:
       - N8N_RUNNERS_TASK_BROKER_URI=http://n8n:5679
